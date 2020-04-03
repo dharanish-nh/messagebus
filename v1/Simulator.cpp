@@ -4,6 +4,7 @@
 #include "MessageBus.h"
 #include <vector>
 
+
 int main() {
 	MessageBus* bus = new MessageBus();
 
@@ -49,4 +50,8 @@ int main() {
 
 	// clean up memory
 	// ...
+	garbage.erase(garbage.begin(), garbage.end());                             //removes all the elements
+	garbage.shrink_to_fit();                                                   //clears up the allocated memory
+	if (garbage.empty()) { std::cout << "Memory reallocated\t" << garbage.capacity() << std::endl; }
+	else{ std::cout << "Memory still occupied\t" <<garbage.size() << std::endl; }
 }
